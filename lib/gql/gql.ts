@@ -14,10 +14,12 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
+    "\n  mutation CreateCarRent($input: CreateRentDto!) {\n    createCarRent(input: $input) {\n      success\n      reason\n      rent {\n        _id\n        startDate\n        endDate\n        pickupLocation\n        returnLocation\n        carInfo {\n          name\n        }\n      }\n    }\n  }\n": typeof types.CreateCarRentDocument,
     "\n  query GetCar($carId: String!) {\n    getCar(carId: $carId) {\n      data {\n        id\n        name\n        brand\n        price\n        location\n        color\n        bodyType\n        steering\n        transmission\n        media {\n          url\n          isCover\n        }\n      }\n    }\n  }\n": typeof types.GetCarDocument,
     "\n  query GetCars(\n    $search: String\n    $brand: [Brand!]\n    $bodyType: [BodyType!]\n    $steering: [Steering!]\n    $transmission: [Transmission!]\n    $color: [Color!]\n    $minPrice: Float\n    $maxPrice: Float\n    $startDate: Float\n    $endDate: Float\n    $limit: Float\n  ) {\n    getCars(\n      search: $search\n      brand: $brand\n      bodyType: $bodyType\n      steering: $steering\n      transmission: $transmission\n      color: $color\n      minPrice: $minPrice\n      maxPrice: $maxPrice\n      startDate: $startDate\n      endDate: $endDate\n      limit: $limit\n    ) {\n      data {\n        id\n        name\n        price\n        transmission\n        bodyType\n        media {\n          url\n          isCover\n        }\n      }\n    }\n  }\n": typeof types.GetCarsDocument,
 };
 const documents: Documents = {
+    "\n  mutation CreateCarRent($input: CreateRentDto!) {\n    createCarRent(input: $input) {\n      success\n      reason\n      rent {\n        _id\n        startDate\n        endDate\n        pickupLocation\n        returnLocation\n        carInfo {\n          name\n        }\n      }\n    }\n  }\n": types.CreateCarRentDocument,
     "\n  query GetCar($carId: String!) {\n    getCar(carId: $carId) {\n      data {\n        id\n        name\n        brand\n        price\n        location\n        color\n        bodyType\n        steering\n        transmission\n        media {\n          url\n          isCover\n        }\n      }\n    }\n  }\n": types.GetCarDocument,
     "\n  query GetCars(\n    $search: String\n    $brand: [Brand!]\n    $bodyType: [BodyType!]\n    $steering: [Steering!]\n    $transmission: [Transmission!]\n    $color: [Color!]\n    $minPrice: Float\n    $maxPrice: Float\n    $startDate: Float\n    $endDate: Float\n    $limit: Float\n  ) {\n    getCars(\n      search: $search\n      brand: $brand\n      bodyType: $bodyType\n      steering: $steering\n      transmission: $transmission\n      color: $color\n      minPrice: $minPrice\n      maxPrice: $maxPrice\n      startDate: $startDate\n      endDate: $endDate\n      limit: $limit\n    ) {\n      data {\n        id\n        name\n        price\n        transmission\n        bodyType\n        media {\n          url\n          isCover\n        }\n      }\n    }\n  }\n": types.GetCarsDocument,
 };
@@ -36,6 +38,10 @@ const documents: Documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation CreateCarRent($input: CreateRentDto!) {\n    createCarRent(input: $input) {\n      success\n      reason\n      rent {\n        _id\n        startDate\n        endDate\n        pickupLocation\n        returnLocation\n        carInfo {\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation CreateCarRent($input: CreateRentDto!) {\n    createCarRent(input: $input) {\n      success\n      reason\n      rent {\n        _id\n        startDate\n        endDate\n        pickupLocation\n        returnLocation\n        carInfo {\n          name\n        }\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
