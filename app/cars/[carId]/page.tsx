@@ -27,6 +27,7 @@ const CarPage = async ({ params, searchParams }: CarPageProps) => {
   const imageUrls = car.media.map((item) => getMediaUrl(item.url))
   const datesQuery = toDatesSearchParams(dates).toString()
   const backHref = datesQuery ? `/?${datesQuery}` : "/"
+  const bookHref = datesQuery ? `/cars/${carId}/booking?${datesQuery}` : `/cars/${carId}/booking`
 
   return (
     <div className="flex flex-col gap-6 lg:py-4">
@@ -52,14 +53,20 @@ const CarPage = async ({ params, searchParams }: CarPageProps) => {
 
           <CarSpecs car={car} />
 
-          <CarPrice price={car.price} dates={dates} />
+          <CarPrice price={car.price} dates={dates} bookHref={bookHref} />
         </div>
       </div>
     </div>
   )
 }
 
-const CarPrice = ({ price, dates }: { price: number; dates: RentalDates | null }) => {
+type CarPriceProps = {
+  price: number
+  dates: RentalDates | null
+  bookHref: string
+}
+
+const CarPrice = ({ price, dates, bookHref }: CarPriceProps) => {
   const days = dates ? getRentalDays(dates) : 1
 
   return (
@@ -70,8 +77,8 @@ const CarPrice = ({ price, dates }: { price: number; dates: RentalDates | null }
         <p className="text-muted-foreground">{dates ? formatRentalDates(dates) : `${formatPrice(price)} per day`}</p>
       </div>
       <p className="text-[32px] leading-10 font-bold">Total: {formatPrice(price * days)}</p>
-      <Button type="button" className="h-13 w-full rounded-full px-6 sm:w-82">
-        Book
+      <Button asChild className="h-13 w-full rounded-full px-6 sm:w-82">
+        <Link href={bookHref}>Book</Link>
       </Button>
     </section>
   )

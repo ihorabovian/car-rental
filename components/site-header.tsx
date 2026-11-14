@@ -3,16 +3,14 @@ import Link from "next/link"
 import { HistoryIcon, LogOutIcon, UserIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import logo from "@/app/icon.png"
+import logo from "@/app/icon.svg"
 
 const ICON_BUTTON_CLASS = "size-8 rounded-full p-1 [&_svg:not([class*='size-'])]:size-5"
 
 export const SiteHeader = () => (
   <header className="hidden min-h-16 items-center justify-between rounded-full border border-border-hard p-3 shadow-[0_0_12px_0_rgba(0,0,0,0.14)] md:flex">
     <Link href="/" className="flex items-center gap-1">
-      <span className="relative h-[22px] w-[30px] overflow-hidden">
-        <Image src={logo} alt="" className="absolute top-[-41.18%] left-0 h-[141.18%] w-full max-w-none" sizes="30px" />
-      </span>
+      <Image src={logo} alt="" loading="eager" className="size-[30px]" />
       <span className="text-base leading-6 font-extrabold uppercase">Leasing</span>
     </Link>
 

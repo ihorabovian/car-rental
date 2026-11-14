@@ -12,7 +12,15 @@ type CarImageProps = {
 export const CarImage = ({ src, alt, sizes, className, isEager = false }: CarImageProps) => (
   <div className={cn("relative overflow-hidden bg-placeholder-image", className)}>
     {src ? (
-      <Image src={src} alt={alt} fill sizes={sizes} loading={isEager ? "eager" : "lazy"} className="object-cover" />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        loading={isEager ? "eager" : "lazy"}
+        fetchPriority={isEager ? "high" : "auto"}
+        className="object-cover"
+      />
     ) : null}
   </div>
 )
