@@ -1,21 +1,32 @@
+"use client"
+
+import { Controller, useFormContext } from "react-hook-form"
+
 import { BookingField, BookingTextField } from "@/components/booking/booking-field"
 import { DateRangeField } from "@/components/booking/date-range-field"
-import type { BookingDraft, BookingField as BookingFieldName } from "@/lib/booking/types"
-import type { RentalDates } from "@/lib/cars/types"
+import type { BookingValues } from "@/lib/booking/types"
 
-type RentalStepProps = {
-  dates: RentalDates | null
-  draft: BookingDraft
-  onDatesChange: (dates: RentalDates) => void
-  onFieldChange: (field: BookingFieldName, value: string) => void
+export const RentalStep = () => {
+  const { control } = useFormContext<BookingValues>()
+
+  return (
+    <div className="flex flex-col gap-4 lg:w-[343px]">
+      <Controller
+        name="dates"
+        control={control}
+        render={({ field, fieldState }) => (
+          <BookingField id="rentalDates" label="Rental dates" error={fieldState.error}>
+            <DateRangeField
+              id="rentalDates"
+              value={field.value ?? null}
+              isInvalid={fieldState.invalid}
+              onChange={field.onChange}
+            />
+          </BookingField>
+        )}
+      />
+      <BookingTextField name="pickupLocation" label="Pickup location" placeholder="Address" required />
+      <BookingTextField name="returnLocation" label="Return location" placeholder="Address" required />
+    </div>
+  )
 }
-
-export const RentalStep = ({ dates, draft, onDatesChange, onFieldChange }: RentalStepProps) => (
-  <div className="flex flex-col gap-4 lg:w-[343px]">
-    <BookingField id="rentalDates" label="Rental dates">
-      <DateRangeField id="rentalDates" value={dates} onChange={onDatesChange} />
-    </BookingField>
-    <BookingTextField field="pickupLocation" label="Pickup location" placeholder="Address" required draft={draft} onChange={onFieldChange} />
-    <BookingTextField field="returnLocation" label="Return location" placeholder="Address" required draft={draft} onChange={onFieldChange} />
-  </div>
-)

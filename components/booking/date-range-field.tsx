@@ -14,13 +14,14 @@ import type { RentalDates } from "@/lib/cars/types"
 type DateRangeFieldProps = {
   id: string
   value: RentalDates | null
+  isInvalid: boolean
   onChange: (dates: RentalDates) => void
 }
 
 const toRange = (dates: RentalDates | null): DateRange | undefined =>
   dates ? { from: parseISO(dates.startDate), to: parseISO(dates.endDate) } : undefined
 
-export const DateRangeField = ({ id, value, onChange }: DateRangeFieldProps) => {
+export const DateRangeField = ({ id, value, isInvalid, onChange }: DateRangeFieldProps) => {
   const [range, setRange] = useState(() => toRange(value))
 
   const today = startOfToday()
@@ -40,7 +41,9 @@ export const DateRangeField = ({ id, value, onChange }: DateRangeFieldProps) => 
         <button
           id={id}
           type="button"
-          className="flex h-[42px] w-full cursor-pointer items-center justify-between gap-2 rounded-full border border-input bg-primary-foreground px-4 text-left text-xl leading-6 tracking-[0.1px] shadow-xs outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          data-invalid={isInvalid}
+          aria-describedby={isInvalid ? `${id}-error` : undefined}
+          className="flex h-[42px] w-full cursor-pointer items-center justify-between gap-2 rounded-full border border-input bg-primary-foreground px-4 text-left text-xl leading-6 tracking-[0.1px] shadow-xs outline-none focus-visible:ring-3 focus-visible:ring-ring/50 data-[invalid=true]:border-destructive data-[invalid=true]:ring-3 data-[invalid=true]:ring-destructive/20"
         >
           <span className={cn("truncate", label ? "text-foreground" : "text-input")}>{label ?? "Pick dates"}</span>
           <CalendarDaysIcon className="size-4 shrink-0 text-muted-foreground" />

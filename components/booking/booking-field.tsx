@@ -1,8 +1,11 @@
-import type { ComponentProps, ReactNode } from "react"
+"use client"
 
+import type { ComponentProps, ReactNode } from "react"
+import { Controller, useFormContext, type FieldError as FormFieldError } from "react-hook-form"
+
+import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import type { BookingDraft, BookingField as BookingFieldName } from "@/lib/booking/types"
+import type { BookingTextFieldName, BookingValues } from "@/lib/booking/types"
 
 export const INPUT_CLASS =
   "h-[42px] rounded-full border-input bg-primary-foreground px-4 text-xl leading-6 tracking-[0.1px] shadow-xs placeholder:text-input md:text-xl"
@@ -10,33 +13,44 @@ export const INPUT_CLASS =
 type BookingFieldProps = {
   id: string
   label: string
+  error: FormFieldError | undefined
   children: ReactNode
 }
 
-export const BookingField = ({ id, label, children }: BookingFieldProps) => (
-  <div className="flex flex-col gap-1">
-    <Label htmlFor={id} className="text-sm leading-[22px] tracking-[0.07px]">
+export const BookingField = ({ id, label, error, children }: BookingFieldProps) => (
+  <Field data-invalid={error !== undefined} className="gap-1">
+    <FieldLabel htmlFor={id} className="text-sm leading-[22px] tracking-[0.07px]">
       {label}
-    </Label>
+    </FieldLabel>
     {children}
-  </div>
+    <FieldError id={`${id}-error`} errors={[error]} />
+  </Field>
 )
 
-type BookingTextFieldProps = Omit<ComponentProps<typeof Input>, "id" | "value" | "onChange"> & {
-  field: BookingFieldName
+type BookingTextFieldProps = Omit<ComponentProps<typeof Input>, "id" | "name" | "value" | "onChange" | "onBlur"> & {
+  name: BookingTextFieldName
   label: string
-  draft: BookingDraft
-  onChange: (field: BookingFieldName, value: string) => void
 }
 
-export const BookingTextField = ({ field, label, draft, onChange, ...inputProps }: BookingTextFieldProps) => (
-  <BookingField id={field} label={label}>
-    <Input
-      {...inputProps}
-      id={field}
-      value={draft[field]}
-      className={INPUT_CLASS}
-      onChange={(event) => onChange(field, event.target.value)}
+export const BookingTextField = ({ name, label, ...inputProps }: BookingTextFieldProps) => {
+  const { control } = useFormContext<BookingValues>()
+
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <BookingField id={field.name} label={label} error={fieldState.error}>
+          <Input
+            {...inputProps}
+            {...field}
+            id={field.name}
+            aria-invalid={fieldState.invalid}
+            aria-describedby={fieldState.invalid ? `${field.name}-error` : undefined}
+            className={INPUT_CLASS}
+          />
+        </BookingField>
+      )}
     />
-  </BookingField>
-)
+  )
+}

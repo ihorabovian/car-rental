@@ -1,19 +1,12 @@
-import type { CreateCarRentMutation, CreateRentDto } from "@/lib/gql/graphql"
+import type { z } from "zod"
+
+import type { bookingSchema } from "@/lib/booking/schema"
+import type { CreateCarRentMutation } from "@/lib/gql/graphql"
 
 export type BookedRent = CreateCarRentMutation["createCarRent"]["rent"]
 
-export type BookingField = Exclude<keyof CreateRentDto, "carId" | "startDate" | "endDate">
+export type BookingValues = z.output<typeof bookingSchema>
 
-export type BookingDraft = Record<BookingField, string>
+export type BookingFieldName = keyof BookingValues
 
-export const EMPTY_BOOKING_DRAFT: BookingDraft = {
-  pickupLocation: "",
-  returnLocation: "",
-  lastName: "",
-  firstName: "",
-  middleName: "",
-  birthDate: "",
-  phone: "",
-  email: "",
-  comment: "",
-}
+export type BookingTextFieldName = Exclude<BookingFieldName, "dates" | "isTermsAccepted">
