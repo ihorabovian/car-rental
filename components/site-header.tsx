@@ -10,7 +10,7 @@ const ICON_BUTTON_CLASS = "size-8 rounded-full p-1 [&_svg:not([class*='size-'])]
 export const SiteHeader = () => (
   <header className="hidden min-h-16 items-center justify-between rounded-full border border-border-hard p-3 shadow-[0_0_12px_0_rgba(0,0,0,0.14)] md:flex">
     <Link href="/" className="flex items-center gap-1">
-      <Image src={logo} alt="" loading="eager" className="size-[30px]" />
+      <Image src={logo} alt="" loading="eager" className="h-[22px] w-auto" />
       <span className="text-base leading-6 font-extrabold uppercase">Leasing</span>
     </Link>
 

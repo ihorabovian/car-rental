@@ -12,23 +12,16 @@ export type BodyType =
   | 'SUV';
 
 export type Brand =
-  | 'AUDI'
-  | 'BMW'
-  | 'GARDEN_CAR'
-  | 'GROCERY_CART'
-  | 'HAIER'
+  | 'GEELY'
+  | 'HAVAL'
   | 'HYUNDAI'
-  | 'INVALID'
-  | 'JEEP'
   | 'KIA'
   | 'MERCEDES'
-  | 'TOYOTA'
   | 'VOLKSWAGEN';
 
 export type Color =
   | 'BLACK'
   | 'BLUE'
-  | 'GREEN'
   | 'GREY'
   | 'ORANGE'
   | 'RED'

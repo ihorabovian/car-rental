@@ -1,18 +1,12 @@
 import type { BodyType, Brand, Color, Steering, Transmission } from "@/lib/cars/types"
 
 export const BRAND_LABELS: Record<Brand, string> = {
-  TOYOTA: "Toyota",
-  JEEP: "Jeep",
-  BMW: "BMW",
-  AUDI: "Audi",
+  HAVAL: "Haval",
   HYUNDAI: "Hyundai",
   VOLKSWAGEN: "Volkswagen",
   KIA: "Kia",
+  GEELY: "Geely",
   MERCEDES: "Mercedes-Benz",
-  GARDEN_CAR: "Garden car",
-  GROCERY_CART: "Grocery cart",
-  HAIER: "Haier",
-  INVALID: "Wheelchair",
 }
 
 export const BODY_TYPE_LABELS: Record<BodyType, string> = {
@@ -31,7 +25,6 @@ export const COLOR_LABELS: Record<Color, string> = {
   BLUE: "Blue",
   GREY: "Grey",
   ORANGE: "Orange",
-  GREEN: "Green",
 }
 
 export const STEERING_LABELS: Record<Steering, string> = {
@@ -52,7 +45,6 @@ export const COLOR_SWATCH_CLASSES: Record<Color, string> = {
   RED: "bg-[#ca251c]",
   ORANGE: "bg-[#ee7d1a]",
   BLUE: "bg-[#2f54e9]",
-  GREEN: "bg-[#177c44]",
 }
 
 export const ANY_COLOR_SWATCH_CLASS =

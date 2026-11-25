@@ -34,18 +34,12 @@ export type CarsFilter = {
 }
 
 export const BRANDS: Brand[] = [
-  "TOYOTA",
-  "JEEP",
-  "BMW",
-  "AUDI",
+  "HAVAL",
   "HYUNDAI",
   "VOLKSWAGEN",
   "KIA",
+  "GEELY",
   "MERCEDES",
-  "GARDEN_CAR",
-  "GROCERY_CART",
-  "HAIER",
-  "INVALID",
 ]
 
 export const BODY_TYPES: BodyType[] = ["SEDAN", "SUV", "COUPE", "HATCHBACK", "CABRIOLET"]
@@ -54,7 +48,7 @@ export const STEERINGS: Steering[] = ["LEFT", "RIGHT"]
 
 export const TRANSMISSIONS: Transmission[] = ["AUTOMATIC", "MANUAL"]
 
-export const COLORS: Color[] = ["WHITE", "BLACK", "SILVER", "GREY", "RED", "ORANGE", "BLUE", "GREEN"]
+export const COLORS: Color[] = ["WHITE", "BLACK", "SILVER", "GREY", "RED", "ORANGE", "BLUE"]
 
 export const PRICE_MAX = 100
 
