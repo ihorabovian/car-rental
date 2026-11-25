@@ -1,41 +1,49 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "caveman": {
       "source": "IhorAbovian/skills",
       "sourceType": "github",
       "skillPath": "skills/caveman/SKILL.md",
-      "computedHash": "536908fcfcb232600a5875aa85f1fd50fd13305e9d67379bcd95f07c8c916f3f"
+      "computedHash": "24801f1e2f064bf0c54f63adb2aba44bef0b9be80b95c79582c33f4b1dbf4157"
     },
     "caveman-review": {
       "source": "IhorAbovian/skills",
       "sourceType": "github",
       "skillPath": "skills/caveman-review/SKILL.md",
-      "computedHash": "536dffb76b4a5da9af6087e7a1e39421e05938a63e2b5215660734074e2b6a53"
+      "computedHash": "3adf0df2b49de3de47c288ecf70350eeb8da2c078389bf203af94bda548409dc"
     },
     "deslop": {
       "source": "IhorAbovian/skills",
       "sourceType": "github",
       "skillPath": "skills/deslop/SKILL.md",
-      "computedHash": "72294d1b10e2e3a85127365b9237b2fbb77032f1f70fe51753058cccd2fcfbc6"
+      "computedHash": "fd26130780c34ccbc5adee55d804e423a2739027a2ce6f66e7ad3804071bfe0b"
     },
     "git-naming": {
       "source": "IhorAbovian/skills",
       "sourceType": "github",
       "skillPath": "skills/git-naming/SKILL.md",
-      "computedHash": "0ac15417475886fd1a40d2d0180bcfbf6989761352ca953874ec3095fc4d7a1f"
+      "computedHash": "16c3662d1320b3e4949064658d3c0d314d4134794390c4a7719978b3584d353b"
+    },
+    "grilling": {
+      "source": "mattpocock/skills",
+      "commit": "d65391149dbb5fe76478e76fa8d5122b2aa5a70e",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/grilling/SKILL.md",
+      "computedHash": "485451958784497cd4c4dbea13cb5bbb579da58fac0d0e45f3bcb310fab68ac7"
     },
     "js-conventions": {
       "source": "IhorAbovian/skills",
       "sourceType": "github",
       "skillPath": "skills/js-conventions/SKILL.md",
-      "computedHash": "52a30dd3671c0efafda274e74e485e94b82256f32d55e74fb2f4cf25c26c2215"
+      "computedHash": "5d10b9881fd17350c8858519c05372ab710e06fce26cc519564a29cad3a63e91"
     },
     "vercel-react-best-practices": {
       "source": "IhorAbovian/skills",
       "sourceType": "github",
       "skillPath": "skills/vercel-react-best-practices/SKILL.md",
-      "computedHash": "6b526d013e28073246a36f99b529bc43745d30832ecfa8217b359c34f260ca6b"
+      "computedHash": "7991ed4fbecdac23f47c1a40c243e00a212a9e7f3604db93959b3ae11dffe299",
+      "commit": "e2154be076bb396b8db66b364fd4948b57ca5d67"
     }
   }
 }
